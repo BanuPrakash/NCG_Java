@@ -261,5 +261,63 @@ variables --> shadowing
 
 ======
 
+abstract keyword
+1) use it with class to specify that it's too generic, can't exist in real world
+can't instantiate a abstract class
+
+2) use it on method --> pure virtual function
 
 
+note: Java doesn't support multiple inheritance
+
+Visbility:
+private
+public
+protected: visible to all classes within the same package + inherited classes
+default:  visible to all classes within the same package
+
+=====================
+
+Realization relationship
+
+A Component will realize the behaviour specified by other component in order to communicate
+
+Program to contract.
+
+In java as in real world we use interfaces for this.
+
+interface EmployeeDao {
+    void addEmployee(Employee e);
+}
+
+
+Why should we program to interface?
+1) DESIGN
+2) IMPLEMENTATION
+3) TESTING
+4) INTEGRATION
+5) LOOSE COUPLING
+
+interfaces are like complete abstract classes, can't instantiate 
+
+interface Flyable {
+    fly();
+}
+class Eagle extends Bird implements FLyable {
+    ///
+
+    public void fly() {
+
+    }
+}
+
+
+class AeroPlane extends Vehicle implements Flyable {
+    ..
+    public void fly() {
+
+    }
+}
+
+Class.forName("java.lang.String"); // loads String class into METASPACE
+Class.forName("com.adobe.prj.entity.Product"); 
