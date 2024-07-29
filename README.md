@@ -242,6 +242,24 @@ Relationship between Objects:
 
 Generalization and Specialization: Inheritance ==> IS A relationship
 
+Mobile m = new Mobile(); memory is created for id, nam, price and connectivity
+all the methods of Product + getter and setter for connectivity;
+
+m.setPrice(3333); // is this valid?
+
+Product p = new Mobile(); 
+p.setPrice(4444); // valid
+p.setConnectivty("5G"); ???? 
+p.isExpensive(); // which method --> calls method in Mobile and not Product class --> dynamic binding
+
+instance methods are dynamic binding / runtime binding
+static methods are compile time bindings
+all instance methods in Java are virtual by default.
+
+static methods --> don't call overriding --> shadowing
+variables --> shadowing
+
+======
 
 
 
