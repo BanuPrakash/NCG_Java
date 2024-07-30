@@ -320,4 +320,39 @@ class AeroPlane extends Vehicle implements Flyable {
 }
 
 Class.forName("java.lang.String"); // loads String class into METASPACE
-Class.forName("com.adobe.prj.entity.Product"); 
+Class.forName("com.adobe.prj.entity.Product");
+
+=================================
+
+Day 2
+
+Recap:
+
+Object --> state & behaviour
+
+Template for Object
+* Java / C++ / C# --> class
+class Product {}
+* JavaScript --> function
+function Product() {}
+* Oracle --> Type
+Type Product 
+
+===========
+* all methods in interface by default are public and abstract
+
+Fight f = new Hero();
+
+f.fight();
+
+f.swim();
+
+Swim s = (Swim) f;
+
+s.swim(); // works
+
+public void fightSequence(Fight[] fight) {
+    ...
+}
+
+Comparable interface --> 
