@@ -356,3 +356,20 @@ public void fightSequence(Fight[] fight) {
 }
 
 Comparable interface --> 
+
+
+class AddComputation implements Computation {
+     @Override
+            public int compute(int firstArg, int secondArg) {
+                return firstArg + secondArg;
+            }
+}
+
+class SubComputation implements Computation {
+     @Override
+            public int compute(int firstArg, int secondArg) {
+                return firstArg - secondArg;
+            }
+}
+
+Computation add = new AddComputation();
