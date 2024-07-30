@@ -48,7 +48,6 @@ public class HOFClient {
 
         List<Product> mobiles = filter(products, p -> p.getCategory().equals("mobile"));
 
-
         for(Product p : mobiles) {
             System.out.println(p);
         }

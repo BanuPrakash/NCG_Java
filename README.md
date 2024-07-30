@@ -491,6 +491,78 @@ Commonly used HOF:
 
 https://rxmarbles.com/
 
+========================
+
+Web application with database connectivity
+
+Java build tools: Maven/Gradle
+* Uniformity across all team members
+* Manage dependecies [ libraries ]
+* automate tasks like compile / testing / Static code analysis / build / package
+
+pom.xml or build.gradle
+Project Object Model : file where depdenencies and goals are configured
+
+======
+
+Uber
+    auth module
+    driver module
+    customer module
+
+JDBC: Java Database Connectivity
+integration library to connect to RDBMS.
+
+Java provides interfaces; implementation classes are provided by database vendors
+
+Oracle / MySQL / MS-SQL / Postgres
+
+Steps:
+    1) Establish a connection to database
+
+    Connection con = DriverManager.getConnection(URL, USER, PWD);
+    getConnection is factory method
+
+    2) SEND SQL statements
+    2.1) Statement
+        use this if SQL is same for every request
+        "select * from products"
+
+    2.2) PreparedStatement
+     use this if SQL takes IN parameter
+
+     "select * from accouts where accountID = ?"
+
+     "insert into products values (?, ?, ?)"
+
+    2.3) CallableStatement
+        to invoke stored procedures of database
+        call SelectAllCustomers('BLORE', 5600001);
+
+        ```
+        CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+            AS
+            SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
+        GO;
+```
+    3) Statement / PreparedStatement / CallableStatement returns
+        3.1) int : for UPDATE / INSERT and DELETE statements ==> number of records effected
+        3.2) ResultSet for SELECT statement
+        ResultSet is a cursor to fetched records
+        boolean next();
+
+        rs.getString("CustomerName")
+        rs.getString(1);
+        
+    4) close the resources --> done in finally block
+
+        try {
+
+        } catch(Exception ex) {
+
+        } finally {
+            con.close();
+        }
 
 
 
