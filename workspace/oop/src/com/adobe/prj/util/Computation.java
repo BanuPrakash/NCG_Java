@@ -1,5 +1,5 @@
 package com.adobe.prj.util;
 
-public interface Computation {
-    int compute(int firstArg, int secondArg);
+public interface Computation <T extends Number> {
+    T compute(T firstArg, T secondArg);
 }

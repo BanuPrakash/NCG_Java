@@ -357,7 +357,7 @@ public void fightSequence(Fight[] fight) {
 
 Comparable interface --> 
 
-
+```
 class AddComputation implements Computation {
      @Override
             public int compute(int firstArg, int secondArg) {
@@ -373,3 +373,60 @@ class SubComputation implements Computation {
 }
 
 Computation add = new AddComputation();
+```
+
+Annotation?
+Metadata --> data about data.
+
+1) Who uses it?
+    * COMPILER
+    * CLASSLOADER
+    * RUNTIME [JRE]
+2) Where can I use it?
+    * TYPE --> class / interface / Annotation / Record / Enum
+    * METHOD
+    * FIELD
+    * PARAMETER
+
+@Override ==> Compiler and METHOD
+@SuppressWarnings ==> Compiler
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.CLASS)
+public @interface Platform {
+    String value();
+}
+
+a = value;
+value = x;
+
+@Platform("android")
+public class PubG extends Game {
+
+}
+
+Compiler --> keeps annotation in .class file
+
+Classloader ==> Samsung / OnePlus
+
+===========
+
+Annotations contains properties; no fields and methods
+
+@Table(name="books")
+public class Book {
+    @Column(name="ISBN")
+    private String isbn;
+
+    @Column(name="price", type="NUMERIC(12,2)")
+    private double amount;
+
+}
+
+create table books( ISBN VARCHAR(255), price NUMERIC(12,2));
+
+insert into books (isbn, amount) values( x);
+
+
+
+
