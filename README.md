@@ -413,19 +413,18 @@ Classloader ==> Samsung / OnePlus
 
 Annotations contains properties; no fields and methods
 
-@Table(name="books")
-public class Book {
-    @Column(name="ISBN")
-    private String isbn;
+Java Collection Framework
+* interfaces 
+* Implementation classes
+* Utility / Algorithm classes
 
-    @Column(name="price", type="NUMERIC(12,2)")
-    private double amount;
+Arrays
 
-}
+Collections
 
-create table books( ISBN VARCHAR(255), price NUMERIC(12,2));
 
-insert into books (isbn, amount) values( x);
+
+
 
 
 
