@@ -442,6 +442,56 @@ all methods are synchronized
 
 Collections --> contains algorithms similar to Arrays
 
+```
+Usage:
+
+1) BAD, not typesafe
+ArrayList list = new ArrayList();
+list.add("A");
+list.add(new Product());
+list.add(new Date());
+
+if(list.get(0) instanceof Date) {
+    Date d = (Date)list.get(0);
+}
+
+2) Typesafe --> BAD because changing implemention is difficult
+ArrayList<String> list = new ArrayList<>();
+list.add("A");
+list.add(new Product()); // ERROR
+
+3) Prefer
+List<String> list = new ArrayList<>(); 
+list.add("A");
+list.add(new Product());
+
+doTask(list);
+
+public void doTask(List<String> list) {
+
+}
+```
+
+HOF : High Order Functions
+
+ higher-order function is a function that does at least one of the following: 
+ * takes one or more functions as arguments, 
+ * returns a function as its result. 
+ 
+ All other functions are first-order functions. 
+
+Commonly used HOF:
+1) filter : subset
+2) map: transform
+3) forEach: iterate
+4) reduce: aggregate [sum, avg, count, ...]
+5) limit: 10
+6) skip
+7) collect
+
+https://rxmarbles.com/
+
+
 
 
 
