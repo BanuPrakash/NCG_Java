@@ -50,7 +50,7 @@ public class Product implements Comparable<Product> {
 
     // called whenever object has to be converted to string
     // System.out.println(p);
-    @Override
+     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +

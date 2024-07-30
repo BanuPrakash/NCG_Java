@@ -418,10 +418,29 @@ Java Collection Framework
 * Implementation classes
 * Utility / Algorithm classes
 
-Arrays
+Data Containers:
+array is a data container: --> size is fixed, adding at end, removing from end
 
-Collections
 
+Collection type:
+1) List
+* ordered
+* allows index based operations
+* duplicates are allowed
+* can be re-ordered
+
+ArrayList, LinkedList, vavr, Apache Collections
+
+2) Set
+* unique collection
+* not ordered
+* Can't re-order
+3) Queue
+
+Vector and Stack are legacy collection; very slow; allow methods of these collections are using locking mechanism to avoid data corruption
+all methods are synchronized
+
+Collections --> contains algorithms similar to Arrays
 
 
 
