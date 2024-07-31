@@ -852,6 +852,13 @@ public class EmployeeDaoFileImpl implements  EmployeeDao{
 ```
 
 Modify Configuration: Active Profiles : dev
+application.properties
+spring.profiles.active=prod
+
+====================================
+
+Factory methods in Spring
+* 3rd party classes needs to used in Spring Container
 
 
 
