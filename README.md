@@ -672,3 +672,53 @@ http://localhost:8080/ ==> index.jsp
 
 mvn jetty:run -Djetty.http.port=9999
 
+==============================================
+
+Spring Framework
+lightweight container to manage life-cycle of beans and wiring depenencies
+Bean: objects which are managed by Spring container
+
+Inversion Of Control container for DI
+
+Think Spring as service provider
+
+Metadata can be in the form of XML or annotation:
+
+```
+public interface ProductDao {
+    void addProduct(Product p) throws PersistenceException;
+    List<Product> getProducts();
+}
+
+public class ProductDaoJdbcImpl implements ProductDao {
+    ...
+}
+
+public class ProductDaoMongoDbImpl implements ProductDao {
+    ...
+}
+
+public class AppService {
+    private ProductDao productDao;
+
+    public void setProductDao(ProductDao dao) {
+        this.productDao = dao
+    }
+
+    public void insert(Product p) {
+        productDao.addProduct(p);
+    }
+}
+beans.xml
+<bean id="jdbc" class="pkg.ProductDaoJdbcImpl" />
+<bean id="mongo" class="pkg.ProductDaoMongoDbImpl" />
+<bean id="service" class="pkg.AppService">
+        <property name="productDao" ref="jdbc"/>
+</bean>
+
+service.setProductDao(jdbc);
+
+Ready to use
+
+```
+
