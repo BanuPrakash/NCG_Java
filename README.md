@@ -795,3 +795,63 @@ Example:
 
 SpringApplication.run(SpringdemoApplication.class, args); is similar to 
 ApplicationContext ctx = new AnnotationConfigApplicationContext();
+
+Field employeeDao in com.adobe.prj.springdemo.service.AppService required a single bean, but 2 were found:
+	- employeeDaoFileImpl: 
+    - employeeDaoJdbcImpl:
+
+Solution 1:
+```
+using @Qualifier
+@Service
+public class AppService {
+    @Autowired
+    @Qualifier("employeeDaoJdbcImpl")
+    private EmployeeDao employeeDao;
+
+```
+Solution 2:
+usng @Primary
+```
+@Repository
+@Primary
+public class EmployeeDaoJdbcImpl  implements  EmployeeDao{
+
+
+@Repository
+public class EmployeeDaoFileImpl implements  EmployeeDao{
+
+@Service
+public class AppService {
+    @Autowired
+    private EmployeeDao employeeDao;
+
+```
+
+Solution 3:
+using @ConditionalOnMissingBean
+
+```
+@Repository
+@ConditionalOnMissingBean(name= "employeeDaoFileImpl")
+public class EmployeeDaoJdbcImpl  implements  EmployeeDao{
+```
+
+Solution 4: 
+using @Profile
+
+```
+@Repository
+@Profile("prod")
+public class EmployeeDaoJdbcImpl  implements  EmployeeDao{
+
+@Repository
+@Profile("dev")
+public class EmployeeDaoFileImpl implements  EmployeeDao{
+
+```
+
+Modify Configuration: Active Profiles : dev
+
+
+
