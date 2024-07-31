@@ -669,3 +669,6 @@ internally it executes
 http://localhost:8080/products
 
 http://localhost:8080/ ==> index.jsp
+
+mvn jetty:run -Djetty.http.port=9999
+

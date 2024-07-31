@@ -62,6 +62,12 @@
                     <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
                     <version>11.0.15</version>
+<!--                    <configuration>-->
+<!--                        <httpConnector>-->
+<!--                            &lt;!&ndash;host>localhost</host&ndash;&gt;-->
+<!--                            <port>9999</port>-->
+<!--                        </httpConnector>-->
+<!--                    </configuration>-->
                 </plugin>
             </plugins>
         </pluginManagement>
