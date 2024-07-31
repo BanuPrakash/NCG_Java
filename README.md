@@ -643,3 +643,20 @@ Servlet engines:
 * jetty
 * netty
 
+mvn compile
+mvn package
+
+packaging: default is jar ==> java archive [zip]
+war --> web archive
+```
+    application
+        |
+        WEB-INF
+            pkg
+                |
+                ProductServlet.class
+                Product.class
+            web.xml
+        index.html
+        styles.css
+```
