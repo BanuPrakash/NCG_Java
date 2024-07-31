@@ -660,3 +660,12 @@ war --> web archive
         index.html
         styles.css
 ```
+
+mvn jetty:run
+internally it executes
+1) mvn compile
+2) mvn package
+
+http://localhost:8080/products
+
+http://localhost:8080/ ==> index.jsp
