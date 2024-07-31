@@ -564,9 +564,62 @@ Steps:
             con.close();
         }
 
+======
+
+```
+ <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <source>17</source>
+                        <target>17</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.4.0</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+                <!-- embedded JETTY server -->
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>11.0.15</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+```
+
+Day 3:
+
+JDBC
+
+% docker exec -it local-mysql bash
+# mysql -u root -p
+mysql> create database JAVA_SPRING;
+mysql> use JAVA_SPRING;
+
+mysql> create table products (id int PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), price double);
+
+mysql> insert into products values (0, 'iPhone 15', 89000.00);
 
 
+mysql> insert into products values (0, 'Samsung OLED', 256000.00);
 
-
+mysql> select * from products;
++----+--------------+--------+
+| id | name         | price  |
++----+--------------+--------+
+|  1 | iPhone 15    |  89000 |
+|  2 | Samsung OLED | 256000 |
++----+--------------+--------+
 
 

@@ -20,7 +20,7 @@ public class ProductDaoJdbcImpl implements ProductDao{
         }
     }
     @Override
-    public void addProduct(Product p) {
+    public void addProduct(Product p) throws PersistenceException {
         String SQL = "insert into products (id, name, price) values (0, ?, ?)";
         Connection con = null;
         try {
@@ -30,8 +30,12 @@ public class ProductDaoJdbcImpl implements ProductDao{
             ps.setDouble(2, p.getPrice());
             ps.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
+//            if(e.getErrorCode() == 1506) {
+//                throw new PersistenceException("Product with id " + p.getId() + " already exists!!", e);
+//            }
+           throw new PersistenceException("unable to add Product", e);
+        }
+        finally {
             if(con != null) {
                 try {
                     con.close();
