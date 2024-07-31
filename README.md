@@ -721,4 +721,77 @@ service.setProductDao(jdbc);
 Ready to use
 
 ```
+To create a Spring Container:
+ApplicationContext ctx = new ClasspathXmlConfiguration("beans.xml");
 
+====
+
+Annotations as metadata:
+* Spring creates beans of classes which has any of the below annoation at class-level
+1) @Component
+2) @Repository
+3) @Service
+4) @Configuration
+5) @Controller
+6) @RestController
+7) @ControllerAdvice
+
+https://github.com/spring-projects/spring-framework/blob/main/spring-jdbc/src/main/resources/org/springframework/jdbc/support/sql-error-codes.xml
+
+```
+public interface ProductDao {
+    void addProduct(Product p) throws PersistenceException;
+    List<Product> getProducts();
+}
+
+@Repository
+public class ProductDaoJdbcImpl implements ProductDao {
+    ...
+}
+
+
+
+@Service
+public class AppService {
+    @Autowired
+    private ProductDao productDao;
+
+    public void insert(Product p) {
+        productDao.addProduct(p);
+    }
+}
+
+ApplicationContext ctx = new AnnotationConfigApplicationContext();
+ctx.scan("com.adobe.prj");
+ctx.refresh();
+
+
+AppService service = ctx.getBean("appService", AppService.class);
+
+
+```
+
+Spring uses below libraries for byte code instrumentation:
+* byte buddy
+* javaassist
+* CGLib
+
+Spring Boot Framework is a framework on top of Spring Framework.
+Spring boot 2.x is built on top of Spring Framework 5.x
+Spring boot 3.x is built on top of Spring Framework 6.x [needs JDK 17+]
+
+Spring Boot Framework  is a highly opinated framework, lots of configurations are out of the box.
+Simplifies development.
+
+Example:
+* if we are building web application --> Tomcat embedded server is configured - ready to use
+* If we are connecting to database --> Connection pool is configured out of the box
+* If we are using ORM --> Hibernate as JPA Vendor is configured out of the box
+
+@SpringBootApplication is 3 in one
+* @Configuration
+* @ComponentScan
+* @EnableAutoConfiguration -> opinated code generation 
+
+SpringApplication.run(SpringdemoApplication.class, args); is similar to 
+ApplicationContext ctx = new AnnotationConfigApplicationContext();
