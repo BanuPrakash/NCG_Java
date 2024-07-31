@@ -602,6 +602,7 @@ Day 3:
 
 JDBC
 
+```
 % docker exec -it local-mysql bash
 # mysql -u root -p
 mysql> create database JAVA_SPRING;
@@ -622,4 +623,44 @@ mysql> select * from products;
 |  2 | Samsung OLED | 256000 |
 +----+--------------+--------+
 
+```
+
+HTTP Methods: GET , POST , PUT , DELETE ,,
+
+```
+public class RegisterServlet extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res) {
+        ...
+    }
+
+    public void doPost(HttpServletRequest req, HttpServletResponse res) {
+        ...
+    }
+    public void doPut(HttpServletRequest req, HttpServletResponse res) {
+        ...
+    }
+    public void doDelete(HttpServletRequest req, HttpServletResponse res) {
+        ...
+    }
+}
+
+Deployment Descriptor --> web.xml
+<!-- based on this Servlet engine instantiates -->
+<servlet>
+    <servlet-name>registerservlet</servlet-name>
+    <servlet-class>pkg.RegisterServlet</servlet-class>
+</servlet>
+
+<!-- mapping -->
+<servlet-mapping>
+    <servlet-name>registerservlet</servlet-name>
+    <url-pattern>/regiseter</url-pattern>
+</servlet-mapping>
+
+OR use Annoation
+ @WebServlet("/register")
+ public class RegisterServlet extends HttpServlet {
+```
+
+Resume @ 11:20
 
