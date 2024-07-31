@@ -860,5 +860,79 @@ spring.profiles.active=prod
 Factory methods in Spring
 * 3rd party classes needs to used in Spring Container
 
+=========================
+
+ORM: Object Relational Mapping
+
+Objects ( java / C++ / Python / JS) --- Tables of database 
+
+ORM generates DML for you, in certain scenarios DDL also
+
+ORM Frameworks:
+1) Hibernate --> JBOSS --> RedHat
+2) TopLink --> Oracle
+3) KODO --> BEA --> Oracle
+4) JDO --> Sun --> Oracle
+5) OpenJPA --> Apache
+6) EclipseLink --> Eclipse 
+...
+
+public class ProductDaoJpaImpl implements ProductDao {
+    @PersistenceContext 
+    EntityManager em;
+
+    @Override
+    public void addProduct(Product p) {
+        em.persist(p);    
+    }
+}
+
+```
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public DataSource getDataSource() throws Exception {
+        ComboPooledDataSource cpds = new ComboPooledDataSource();
+        cpds.setDriverClass( "com.mysql.cj.jdbc.Driver" ); //loads the jdbc driver
+        cpds.setJdbcUrl( "jdbc:mysql://localhost:3306/JAVA_SPRING" );
+        cpds.setUser("root");
+        cpds.setPassword("Welcome123");
+        cpds.setMinPoolSize(5);
+        cpds.setAcquireIncrement(5);
+        cpds.setMaxPoolSize(20);
+        return  cpds;
+    }
+
+    @Bean
+    public EntityManagerFactory emf(DataSource ds) {
+        LocalContainerEntityManagerFactory emf = new LocalContainerEntityManagerFactory();
+        emf.setDataSource(ds);
+        emf.setJpaVendor(new HibernateJpaVendor());
+        emf.setPackagesToScan("com.adobe.prj.entity");
+        return emf;
+    }
+}
+
+
+```
+
+Spring Data Jpa Module on top of Spring Core Module simplies using JPA/ORM
+as in
+Out ouf the box it creates:
+1) DataSource
+2) creates EntityManagerFActory
+3) no need for @Repository classes
+4) by default uses HikariCP for database connection pool
+5) by default it uses Hibernate as JPAVEndor
+
+Spring Boot Project:
+dependecies:
+lombok,
+mysql,
+jpa
+
+
+https://docs.spring.io/spring-boot/appendix/application-properties/index.html
 
 
