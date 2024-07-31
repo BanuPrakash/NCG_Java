@@ -567,35 +567,7 @@ Steps:
 ======
 
 ```
- <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <configuration>
-                        <source>17</source>
-                        <target>17</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>3.4.0</version>
-                    <configuration>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                    </configuration>
-                </plugin>
-                <!-- embedded JETTY server -->
-                <plugin>
-                    <groupId>org.eclipse.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <version>11.0.15</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+
 ```
 
 Day 3:
@@ -660,7 +632,14 @@ Deployment Descriptor --> web.xml
 OR use Annoation
  @WebServlet("/register")
  public class RegisterServlet extends HttpServlet {
+
+
+ @WebServlet("/login")
+ public class LoginServlet extends HttpServlet {
 ```
 
-Resume @ 11:20
+Servlet engines:
+* tomcat
+* jetty
+* netty
 
