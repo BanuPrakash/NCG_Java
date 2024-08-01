@@ -53,6 +53,17 @@ public class OrderService {
         orderDao.save(order); // cascade --> saves items also
         return "order placed!!!";
     }
+
+    public Order getOrderById(int id) {
+        return orderDao.findById(id).get();
+    }
+    @Transactional
+    public Product updateProduct(int id, double price) {
+        Product p = productDao.findById(id).get(); // id, name, price , qty
+        p.setPrice(price);
+        return p;
+    }
+
     public long getCustomerCount() {
         return customerDao.count();
     }
