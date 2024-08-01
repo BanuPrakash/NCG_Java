@@ -1,3 +1,7 @@
 ### @name="GET ALL PRODUCTS"
 GET http://localhost:8080/api/products
 Accept: application/json
+
+### @name="GET PRODUCT BY ID"
+GET http://localhost:8080/api/products/2
+Accept: application/json
