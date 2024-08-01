@@ -1,9 +1,13 @@
 package com.adobe.prj.orderapp.service;
 
 import com.adobe.prj.orderapp.dao.CustomerDao;
+import com.adobe.prj.orderapp.dao.OrderDao;
 import com.adobe.prj.orderapp.dao.ProductDao;
 import com.adobe.prj.orderapp.entity.Customer;
+import com.adobe.prj.orderapp.entity.LineItem;
+import com.adobe.prj.orderapp.entity.Order;
 import com.adobe.prj.orderapp.entity.Product;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +20,39 @@ import java.util.Optional;
 public class OrderService {
     private final ProductDao productDao;
     private final CustomerDao customerDao; // generated implementation class by Spring Data Jpa is wired
+    private final OrderDao orderDao;
 
+    /*
+        order
+        {
+         "customer": {
+                    "email": "rita@adobe.com"
+            },
+          "items" : [
+                {"product": {"id": 3}, "qty" : 2},
+                 {"product": {"id": 1}, "qty" : 1}
+          ]
+        }
+     */
+
+    @Transactional
+    public String placeOrder(Order order) {
+        double total = 0.0;
+        List<LineItem> items = order.getItems();
+        for(LineItem item: items) {
+            Product p = productDao.findById(item.getProduct().getId()).get(); // id, name, price , qty
+            if(p.getQuantity() < item.getQty()) {
+                throw  new IllegalArgumentException("Product " + p.getName() + " not in stock!!!");
+            }
+            item.setAmount(item.getQty() * p.getPrice()); // + discount , TAX
+            total += item.getAmount();
+
+            p.setQuantity(p.getQuantity() - item.getQty());  // DIRTY CHECKING ORM feature
+        }
+        order.setTotal(total);
+        orderDao.save(order); // cascade --> saves items also
+        return "order placed!!!";
+    }
     public long getCustomerCount() {
         return customerDao.count();
     }

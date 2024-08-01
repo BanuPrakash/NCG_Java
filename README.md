@@ -972,6 +972,52 @@ Spring Data jpa is going to generate Implementation classes for JpaRepository in
 update products set qty = 100 where 1 = 1;
 
 
-JPA Projections:
+1 Order has 4 items:
+a) to save
+orderDao.save(order);
+itemDao.save(i1);
+itemDao.save(i2);
+itemDao.save(i3);
+itemDao.save(i4);
 
+2) to delete
+orderDao.delete(order);
+itemDao.delete(i1);
+itemDao.delete(i2);
+...
+
+Using Cascade
+ @OneToMany(cascade = CascadeType.ALL)
+ @JoinColumn(name="order_fk")
+ private List<LineItem> items = new ArrayList<>();
+
+1 Order has 4 items:
+a) to save
+orderDao.save(order); // cascade takes care of persiting items also
+
+b) to delete
+orderDao.delete(order); // cascade -- deletes items of given order
+
+=======
+
+fetching by default is LAZY
+
+orderDao.findById(1);
+select * from orders where oid = 1;
+items are not fetched
+
+
+@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+@JoinColumn(name="order_fk")
+private List<LineItem> items = new ArrayList<>();
+
+orderDao.findById(1);
+select * from orders where oid = 1;
+select * from items where order_fk = 1;
+
+====
+
+note:
+1) one To Many is LAZY fetching by default
+2) Many to One is EAGER fetching by default
 
