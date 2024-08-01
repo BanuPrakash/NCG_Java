@@ -1028,11 +1028,56 @@ Getting Scalar Values
 * SQL
 * JP-QL
 
-from Customer
+======
 
-select email, fname from customers where fname = 'sam'
+* OneToMany
+* ManyToOne
+* OneToOne
+* ManyToMany
+
+```
+@Entity 
+public class Employee {
+    int empid;
+    name
+}
+
+@Entity
+public class Laptop {
+    String serialNo;
+    String storage;
+    String screen;
+
+    @OneToOne
+    @JoinColumn(name="emp_fk")
+    Employee employee;
+}
 
 
+employees
+empid  | name
 
-select email, firstName from Customer where firstName = 'sam'
 
+laptops
+serail_no | storage | screen | emp_fk
+```
+
+Employee Project:
+```
+emp_id | name | hire_date 
+
+
+project_id | name | client | start_date | end_date
+
+emp_project
+
+emp_id | project_id | role      | start_date | end_date
+12          p1         JR.ENG       
+14          p2
+12          p3
+34          p2
+
+    1                   *                   1
+Employeee  -----> EmployeeProject <------- Project
+
+```
