@@ -966,5 +966,9 @@ create tables when application starts
 entity has to map to existing tables 
 can't create or alter
 
+===
+Spring Data jpa is going to generate Implementation classes for JpaRepository interface
+
+update products set qty = 100 where 1 = 1;
 
 
