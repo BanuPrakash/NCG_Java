@@ -17,6 +17,11 @@ public class OrderService {
     private final ProductDao productDao;
     private final CustomerDao customerDao; // generated implementation class by Spring Data Jpa is wired
 
+    public List<Product> getByRange(double low, double high) {
+        return productDao.findByPriceBetween(low, high);
+    }
+
+
     public List<Product> getProducts() {
         return productDao.findAll();
     }

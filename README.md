@@ -972,3 +972,6 @@ Spring Data jpa is going to generate Implementation classes for JpaRepository in
 update products set qty = 100 where 1 = 1;
 
 
+JPA Projections:
+
+
