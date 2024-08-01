@@ -935,4 +935,36 @@ jpa
 
 https://docs.spring.io/spring-boot/appendix/application-properties/index.html
 
+Day 4
+
+---
+
+Recap: 
+Spring Framework and JPA/ORM
+
+Entity are mapped to database table --> @Entity
+
+PersistenceContext is an environment where entities are managed [ sync state with database ]
+EntityManager interface is used to perform CRUD operations on entities present in PersistenceContext
+
+EntityManagerFactory helps create PersitenceContext and provide EntityManager;
+it uses DataSource [ pool of database connection] + JPAVendor (like hibernate)
+
+========
+
+
+1) spring.jpa.hibernate.ddl-auto=update
+If table exists map entity to table
+If not exists create a new table
+If required alter table
+
+2) spring.jpa.hibernate.ddl-auto=create
+drop table when application terminates
+create tables when application starts
+
+3) spring.jpa.hibernate.ddl-auto=validate
+entity has to map to existing tables 
+can't create or alter
+
+
 
