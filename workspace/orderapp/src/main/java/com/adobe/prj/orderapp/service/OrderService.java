@@ -3,6 +3,7 @@ package com.adobe.prj.orderapp.service;
 import com.adobe.prj.orderapp.dao.CustomerDao;
 import com.adobe.prj.orderapp.dao.OrderDao;
 import com.adobe.prj.orderapp.dao.ProductDao;
+import com.adobe.prj.orderapp.dto.ReportDTO;
 import com.adobe.prj.orderapp.entity.Customer;
 import com.adobe.prj.orderapp.entity.LineItem;
 import com.adobe.prj.orderapp.entity.Order;
@@ -22,6 +23,9 @@ public class OrderService {
     private final CustomerDao customerDao; // generated implementation class by Spring Data Jpa is wired
     private final OrderDao orderDao;
 
+    public List<ReportDTO> getReport(int id) {
+        return orderDao.getReport(id);
+    }
     /*
         order
         {

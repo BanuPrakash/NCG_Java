@@ -1,5 +1,6 @@
 package com.adobe.prj.orderapp.client;
 
+import com.adobe.prj.orderapp.dto.ReportDTO;
 import com.adobe.prj.orderapp.entity.Customer;
 import com.adobe.prj.orderapp.entity.LineItem;
 import com.adobe.prj.orderapp.entity.Order;
@@ -20,7 +21,18 @@ public class OrderClient implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
       //  placeOrder();
-        getOrder();
+       // getOrder();
+
+        getReport();
+    }
+
+    private void getReport() {
+        List<ReportDTO> report = service.getReport(1);
+        ReportDTO reportDTO = report.get(0);
+        System.out.println(reportDTO.email() +", "
+                + reportDTO.firstName() + ","
+      + reportDTO.orderDate() + ","
+    + reportDTO.total());
     }
 
     public void getOrder() {
@@ -51,10 +63,10 @@ public class OrderClient implements CommandLineRunner {
      */
     private void placeOrder() {
         Order order = new Order();
-        order.setCustomer(Customer.builder().email("sam@adobe.com").build());
+        order.setCustomer(Customer.builder().email("rita@adobe.com").build());
         List<LineItem> items = new ArrayList<>();
-            LineItem i1 = LineItem.builder().product(Product.builder().id(3).build()).qty(2).build();
-            LineItem i2 = LineItem.builder().product(Product.builder().id(1).build()).qty(1).build();
+            LineItem i1 = LineItem.builder().product(Product.builder().id(2).build()).qty(2).build();
+            LineItem i2 = LineItem.builder().product(Product.builder().id(3).build()).qty(1).build();
             items.add(i1);
             items.add(i2);
         order.setItems(items);

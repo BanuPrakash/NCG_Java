@@ -1021,3 +1021,18 @@ note:
 1) one To Many is LAZY fetching by default
 2) Many to One is EAGER fetching by default
 
+select c.email, c.fname, c.lname, o.order_date, o.total   from orders o inner join  customers c on o.customer_fk = c.email
+   
+Getting Scalar Values 
+
+* SQL
+* JP-QL
+
+from Customer
+
+select email, fname from customers where fname = 'sam'
+
+
+
+select email, firstName from Customer where firstName = 'sam'
+
