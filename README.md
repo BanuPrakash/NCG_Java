@@ -1107,3 +1107,86 @@ public class Example {
    }
 }
 ```
+Rendering ==> data to Presentation
+
+Building RESTful Web Services.
+
+* Server Side Rendering
+Cons:
+* Can't have heterogenous clients
+* Heavy payload [ server has to send entire page ]
+
+
+* Client Side Rendering
+* Server sends representation of Data in various formats like JSON / XML / CSV
+
+Adv: 
+* heterogenous clients
+* payload is less
+
+Building RESTful WS or GraphQL 
+
+====
+
+RESTful WS
+REpresentational State Transfer
+
+* Resource: files / database / printer
+* Representation: state of resource at a given point
+* ContentNegotiation: serve representation im various formats based on client requests
+
+Http HEADER
+Accept: application / json
+Accept: text/xml
+
+By including:
+```
+ <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+We get:
+1) Spring MVC Module
+ModelViewController
+Model --> business data and logic
+Controller --> application flow
+View --> Presentation [ not required for RESTFul]
+
+2) DispatcherServlet: intercepts all HTTP requests from client
+3) HandlerMapping: mapping URLs to @Controller or @RestController
+
+```
+    @RestController
+    @RequestMapping("/api/products")
+    public class ProductController {
+
+        @GetMapping
+        List<Product> getProducts() {
+            ...
+        }
+
+        @PostMapping
+        String addProduct(@RequestBody Product p) {
+            ..
+        }
+    }
+
+```
+
+POST
+http://localhost:8080/api/products
+Content-type: application/json
+
+{
+    "name": "A",
+    "price" : 3434,
+    "quantity": 100
+}
+
+
+ContentNegotiationHandlers
+
+Jackson java <---> json
+Alternate: jettison, GSON, Moxy
+
