@@ -1081,3 +1081,7 @@ emp_id | project_id | role      | start_date | end_date
 Employeee  -----> EmployeeProject <------- Project
 
 ```
+
+EmployeeProject as aggregate
+
+spring.datasource.url=jdbc:mysql://localhost:3306/EMP_PROJECT?createDatabaseIfNotExist=true
