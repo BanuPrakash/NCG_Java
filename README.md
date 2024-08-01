@@ -1071,11 +1071,11 @@ project_id | name | client | start_date | end_date
 
 emp_project
 
-emp_id | project_id | role      | start_date | end_date
-12          p1         JR.ENG       
-14          p2
-12          p3
-34          p2
+id | emp_id | project_id | role      | start_date | end_date
+1    12          p1         JR.ENG       
+2    14          p2
+3    12          p3
+4    34          p2
 
     1                   *                   1
 Employeee  -----> EmployeeProject <------- Project
