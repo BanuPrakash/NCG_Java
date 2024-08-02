@@ -1408,3 +1408,40 @@ MethodArgumentNotValidException:
 [Field error in object 'product' on field 'name': rejected value []; codes [NotBlank.product.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.name,name]; arguments []; default message [name]]; default message [Name is required]] ]
 
 ```
+
+Task:
+```
+Employee Project: convert into RESTful WS:
+Assuming employees and projects are already existing in backend.
+If not insert data directly in the backend
+
+projects
+pid | name | ...
+341   aem
+
+employees
+eid | name | ...
+412
+
+
+1) EmployeeProjectController
+
+    @PostMapping
+    assignEmployeeToProject(....) {
+
+    }
+
+    releaseEmployeeFromProject(@RequestParam("id") int id) {
+        updates tehe end_date to system date
+    }
+    
+employee_project
+id | eid | pid | start_date | end_date | role
+1    412    341  22-JUL-2024  NULL       JR.SOFTWARE ENG.
+
+````
+
+Resume @ 2:00
+
+
+
