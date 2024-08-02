@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface OrderDao extends JpaRepository<Order, Integer> {
@@ -18,4 +19,7 @@ public interface OrderDao extends JpaRepository<Order, Integer> {
 
     @Query("select new com.adobe.prj.orderapp.dto.ReportDTO(c.email, c.firstName, c.lastName, o.orderDate, o.total) from Order o inner join o.customer c where o.oid = :id")
     List<ReportDTO> getReport(@Param("id") int oid);
+
+    @Query("from Order where DATE(orderDate) = DATE(:od)")
+    List<Order> getOrderForGivenDate(@Param("od") Date orderDate);
 }

@@ -1,5 +1,6 @@
 package com.adobe.prj.orderapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +24,7 @@ public class Order {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="order_date")
+    @JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss")
     private Date orderDate = new Date();
 
     @ManyToOne

@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,15 @@ public class OrderService {
     private final CustomerDao customerDao; // generated implementation class by Spring Data Jpa is wired
     private final OrderDao orderDao;
 
+    public List<Order> getByDate(String orderdate) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            return orderDao.getOrderForGivenDate(sdf.parse(orderdate));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return  null;
+    }
     public List<ReportDTO> getReport(int id) {
         return orderDao.getReport(id);
     }

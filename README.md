@@ -1317,6 +1317,8 @@ Status Codes:
 
 ======
 
+Open Session In View Design Pattern
+
 ```
  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="order_fk")
@@ -1336,3 +1338,9 @@ select * from orders;
 Client while getting items --> lazy intialization
 ```
 ======
+
+OpenSessionInViewFilter
+
+Query to get Orders for a Give Date
+
+orders for 2024-08-01

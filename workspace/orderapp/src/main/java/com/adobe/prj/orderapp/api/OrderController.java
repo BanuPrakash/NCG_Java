@@ -14,9 +14,15 @@ public class OrderController {
     private final OrderService service;
 
     @GetMapping
-    public List<Order> getOrders() {
-        return  service.getOrders();
+    public List<Order> getOrders(@RequestParam(name = "order-date", required = false) String orderDate) {
+        if(orderDate == null) {
+            return service.getOrders();
+        } else {
+            return service.getByDate(orderDate);
+        }
     }
+
+
 
     @PostMapping
     public String placeOrder(@RequestBody Order o) {
