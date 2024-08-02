@@ -1441,7 +1441,33 @@ id | eid | pid | start_date | end_date | role
 
 ````
 
-Resume @ 2:00
+* Handling Date type --> @DateTimeFormat , SimpleDateFormat ,..
+* Exception Handling --> @EXceptionHandler and @ControllerAdvice
+* Validation --> jakarata.constraints.validation --> @Valid
+
+====================
+
+Documentation of RESTful WS
+* RAML https://raml.org/
+* OpenAPI --> Swagger
+
+```
+ <!-- OpenAPI -->
+    <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>2.5.0</version>
+    </dependency>
+```
+By adding above dependency it scans all classes @Controller and @RestController and creates documentation
+
+http://localhost:8080/swagger-ui/index.html using jQuery and Bootstrap CSS
+
+http://localhost:8080/v3/api-docs
+
+
+====================
+
 
 
 
