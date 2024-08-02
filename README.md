@@ -1466,7 +1466,41 @@ http://localhost:8080/swagger-ui/index.html using jQuery and Bootstrap CSS
 http://localhost:8080/v3/api-docs
 
 SwaggerConfig.java
+ProductController.java
+
 ====================
+
+Testing:
+* Unit Testing
+* Integration Testing
+* End2End Testing
+
+Validate the written Code --> testing
+
+TCER --> Test Case Expected Result --> could be Excel sheet
+
+
+TDD : write test code along with your application development
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+```
+
+Provides:
+1) JUnit Jupiter [JUNIT 5] as Unit testing Framework / TESTNG is the alternate
+2) Hamcrest : assertion libraries / Matchers
+https://hamcrest.org/JavaHamcrest/tutorial
+3) JSONPath
+https://jsonpath.com/
+4) Mockito : Mocking library to test functionalities by mocking the dependencies
+Alternate: EasyMock / JMock
+
+
+
 
 
 
