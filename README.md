@@ -1500,8 +1500,24 @@ https://jsonpath.com/
 Alternate: EasyMock / JMock
 
 
+@WebAppConfiguration
+@AutoConfigureMockMvc
+@SpringBootTest(classes = OrderappApplication.class)
 
 
+=======
 
+Unit test Controller by mocking Service ==> Mockito
 
+@WebMvcTest(ProductController.class)
+
+* narrow the tests to only the web layer by using @WebMvcTest
+
+* Spring Boot instantiates only the web layer rather than the whole context
+
+* creates TestDispatcherServlet instead of DispatcherServlet
+
+* Creates WebApplicationContext 
+
+* instantiates only ProductController and not any other Service / DAO / Connection or any other controller
 
