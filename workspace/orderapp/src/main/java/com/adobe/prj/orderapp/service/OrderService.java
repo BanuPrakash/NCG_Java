@@ -1,5 +1,6 @@
 package com.adobe.prj.orderapp.service;
 
+import com.adobe.prj.orderapp.api.EntityNotFoundException;
 import com.adobe.prj.orderapp.dao.CustomerDao;
 import com.adobe.prj.orderapp.dao.OrderDao;
 import com.adobe.prj.orderapp.dao.ProductDao;
@@ -99,12 +100,12 @@ public class OrderService {
         return productDao.save(p);
     }
 
-    public Product getProductById(int id) {
+    public Product getProductById(int id) throws EntityNotFoundException {
         Optional<Product> opt = productDao.findById(id);
         if(opt.isPresent()) {
             return opt.get();
         }
-        return  null;
+       throw  new EntityNotFoundException("Product with id : "  + id + " doesn't exist!!!");
     }
 
     public Customer saveCustomer(Customer c) {

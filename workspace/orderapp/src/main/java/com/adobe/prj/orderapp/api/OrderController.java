@@ -15,6 +15,8 @@ public class OrderController {
 
     @GetMapping
     public List<Order> getOrders(@RequestParam(name = "order-date", required = false) String orderDate) {
+        // public List<Order> getOrders(@RequestParam(name = "order-date", required = false)
+        // @DateTimeFormat(pattern = "yyyy-MM-dd") Date orderDate) {
         if(orderDate == null) {
             return service.getOrders();
         } else {

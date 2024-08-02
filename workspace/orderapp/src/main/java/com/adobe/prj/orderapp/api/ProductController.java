@@ -36,7 +36,7 @@ public class ProductController {
 
     // GET http://localhost:8080/api/products/3
     @GetMapping("/{pid}")
-    public  Product getProductById(@PathVariable("pid") int id) {
+    public  Product  getProductById(@PathVariable("pid") int id) throws EntityNotFoundException{
         return service.getProductById(id);
     }
 
@@ -57,7 +57,7 @@ public class ProductController {
     // PUT http://localhost:8080/api/products/3
     // payload --> JSON / XML has to be  converted to Product
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable("id") int id, @RequestBody Product p) {
+    public Product updateProduct(@PathVariable("id") int id, @RequestBody Product p) throws EntityNotFoundException{
         service.updateProduct(id, p.getPrice());
         return  service.getProductById(id);
     }

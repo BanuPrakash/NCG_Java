@@ -1344,3 +1344,17 @@ OpenSessionInViewFilter
 Query to get Orders for a Give Date
 
 orders for 2024-08-01
+
+Spring by default has HttpMessageConverters for:
+1) String to int
+2) String to boolean
+3) String to double
+... for any primitive
+
+@DateTimeFormat(pattern = "dd-MM-yyyy") is for converting String to Date
+
+========================
+
+
+A controller advice allows you to use exactly  exception handling techniques but apply them across the whole application, where exceptions are propagated from @controller or @RestController
+
