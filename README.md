@@ -1500,9 +1500,6 @@ https://jsonpath.com/
 Alternate: EasyMock / JMock
 
 
-@WebAppConfiguration
-@AutoConfigureMockMvc
-@SpringBootTest(classes = OrderappApplication.class)
 
 
 =======
@@ -1520,4 +1517,9 @@ Unit test Controller by mocking Service ==> Mockito
 * Creates WebApplicationContext 
 
 * instantiates only ProductController and not any other Service / DAO / Connection or any other controller
+
+=========================
+
+
+Security on Monday
 
