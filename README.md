@@ -1317,6 +1317,7 @@ Status Codes:
 
 ======
 
+```
  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="order_fk")
     private List<LineItem> items = new ArrayList<>();
@@ -1333,5 +1334,5 @@ Connection is lost once Call is done to database
 select * from orders;
 
 Client while getting items --> lazy intialization
-
+```
 ======
