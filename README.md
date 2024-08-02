@@ -1358,3 +1358,53 @@ Spring by default has HttpMessageConverters for:
 
 A controller advice allows you to use exactly  exception handling techniques but apply them across the whole application, where exceptions are propagated from @controller or @RestController
 
+Validation:
+```
+ <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
+jakarta.validation.constraints
+
+```
+ @NotBlank(message = "Name is required")
+    private  String name;
+    
+    @Min(value = 10, message = "Price ${validatedValue} should be more than {value}")
+    private double price;
+
+    @Min(value = 1, message = "Quantity ${validatedValue} should be more than {value}")
+    @Column(name="qty")
+    private int quantity;
+
+ProductController.java
+@PostMapping
+    @ResponseStatus(HttpStatus.CREATED) //201
+    public Product addProduct(@RequestBody @Valid  Product p) {
+        return service.addProduct(p);
+    }
+```
+
+
+### @name="Add Invalid Product"
+POST http://localhost:8080/api/products
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": 1.00,
+  "quantity": 0
+}
+
+MethodArgumentNotValidException: 
+ 3 errors: 
+ ```
+ [Field error in object 'product' on field 'quantity': rejected value [0]; codes [Min.product.quantity,Min.quantity,Min.int,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.quantity,quantity]; arguments []; default message [quantity],1]; default message [Quantity 0 should be more than 1]] 
+
+[Field error in object 'product' on field 'price': rejected value [1.0]; codes [Min.product.price,Min.price,Min.double,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.price,price]; arguments []; default message [price],10]; default message [Price 1.0 should be more than 10]] 
+
+[Field error in object 'product' on field 'name': rejected value []; codes [NotBlank.product.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.name,name]; arguments []; default message [name]]; default message [Name is required]] ]
+
+```

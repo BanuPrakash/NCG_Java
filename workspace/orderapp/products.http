@@ -30,3 +30,14 @@ Content-Type: application/json
   "price": 5200.20
 }
 
+
+### @name="Add Invalid Product"
+POST http://localhost:8080/api/products
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": 1.00,
+  "quantity": 100
+}
