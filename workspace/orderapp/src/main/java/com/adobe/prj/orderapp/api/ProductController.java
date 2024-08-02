@@ -4,6 +4,7 @@ import com.adobe.prj.orderapp.entity.Product;
 import com.adobe.prj.orderapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,10 +42,16 @@ public class ProductController {
 
     // POST http://localhost:8080/api/products
     // payload --> JSON / XML has to be  converted to Product
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED) //201
+//    public Product addProduct(@RequestBody Product p) {
+//        return service.addProduct(p);
+//    }
+
+    // Prefer ResponseEntity if STATUS CODE + ETAG +  additional info has to be sent along with payload
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED) //201
-    public Product addProduct(@RequestBody Product p) {
-        return service.addProduct(p);
+    public ResponseEntity<Product> addProduct(@RequestBody Product p) {
+        return new ResponseEntity(service.addProduct(p), HttpStatus.CREATED);
     }
 
     // PUT http://localhost:8080/api/products/3

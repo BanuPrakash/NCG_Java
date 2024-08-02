@@ -58,6 +58,9 @@ public class OrderService {
         return "order placed!!!";
     }
 
+    public List<Order> getOrders() {
+        return orderDao.findAll();
+    }
     public Order getOrderById(int id) {
         return orderDao.findById(id).get();
     }

@@ -23,7 +23,7 @@ public class OrderClient implements CommandLineRunner {
       //  placeOrder();
        // getOrder();
 
-        getReport();
+       // getReport();
     }
 
     private void getReport() {

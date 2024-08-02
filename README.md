@@ -1316,3 +1316,22 @@ Status Codes:
 300 series: REDIRECTION SERIES
 
 ======
+
+ @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="order_fk")
+    private List<LineItem> items = new ArrayList<>();
+
+<<By Default>>
+spring.jpa.open-in-view=true
+
+Connection is kept alive until response is not commited
+
+
+spring.jpa.open-in-view=false
+
+Connection is lost once Call is done to database
+select * from orders;
+
+Client while getting items --> lazy intialization
+
+======

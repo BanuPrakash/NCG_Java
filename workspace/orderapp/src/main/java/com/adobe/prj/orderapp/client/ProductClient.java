@@ -19,7 +19,7 @@ public class ProductClient implements CommandLineRunner {
     public void run(String... args) throws Exception {
        // addProduct();
       //  getProducts();
-        getProductsByRange();
+     //   getProductsByRange();
     }
 
     private void getProductsByRange() {
