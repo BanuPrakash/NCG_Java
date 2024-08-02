@@ -5,3 +5,28 @@ Accept: application/json
 ### @name="GET PRODUCT BY ID"
 GET http://localhost:8080/api/products/2
 Accept: application/json
+
+### @name="GET PRODUCTS BY RANGE"
+GET http://localhost:8080/api/products?low=5000&high=250000
+Accept: application/json
+
+### @name="Add a Product"
+POST http://localhost:8080/api/products
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Tata Sky",
+  "price": 9800.00,
+  "quantity": 100
+}
+
+### @name="Update a Product"
+PUT http://localhost:8080/api/products/3
+Accept: application/json
+Content-Type: application/json
+
+{
+  "price": 5200.20
+}
+

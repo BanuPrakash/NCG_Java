@@ -1243,7 +1243,7 @@ List<Product> getByRange(@Param("l") double low, @Param("h") double high);
 Part 2: 
 
 Spring MVC Module
-``
+```
 <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -1303,5 +1303,16 @@ Guiding Principles of REST:
 2) Client-server
 3) Stateless: server should not keep any conversational state of client
 4) Cacheable
+
+https://martinfowler.com/articles/richardsonMaturityModel.html
+
+Status Codes:
+200 : OK
+201 : CREATED
+400 : BAD REQUEST
+401: UNAUTHORIZED
+404: RESOURCE NOT FOUND
+500: INTERNAL SERVER ERROR
+300 series: REDIRECTION SERIES
 
 ======

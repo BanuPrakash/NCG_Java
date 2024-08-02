@@ -61,6 +61,7 @@ public class OrderService {
     public Order getOrderById(int id) {
         return orderDao.findById(id).get();
     }
+
     @Transactional
     public Product updateProduct(int id, double price) {
         Product p = productDao.findById(id).get(); // id, name, price , qty
