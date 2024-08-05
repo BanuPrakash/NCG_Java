@@ -1638,7 +1638,7 @@ JWT: JSON Web Tokens are an open, industry standard RFC 7519 method for represen
 
 https://jwt.io/
 
-JWT Token:
+JWT Token: only for Authorization
 ```
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
 eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.
@@ -1681,9 +1681,10 @@ Instead of SecretKey we can have Private Key and Public Key
 
 Custom UserDetailsService to use JPA instead of built-in AuthenticationManager
 
+Set: unique collection
+List supports duplicate
 
-Resume @ 2:00
-
+Prefer Set over List for association
 
 
 
