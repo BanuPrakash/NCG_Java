@@ -1679,6 +1679,7 @@ Instead of SecretKey we can have Private Key and Public Key
 ===========================
 
 
+Custom UserDetailsService to use JPA instead of built-in AuthenticationManager
 
 
 
