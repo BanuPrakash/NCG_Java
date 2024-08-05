@@ -1,5 +1,6 @@
 package com.adobe.prj.orderapp.security.api;
 
+import com.adobe.prj.orderapp.security.dto.JwtAuthenticationResponse;
 import com.adobe.prj.orderapp.security.dto.SignInDTO;
 import com.adobe.prj.orderapp.security.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,9 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
-    public String login(@RequestBody SignInDTO dto) {
+    public JwtAuthenticationResponse login(@RequestBody SignInDTO dto) {
         // write token back...
+        System.out.println("DTO "  + dto);
         return authenticationService.login(dto);
     }
 }

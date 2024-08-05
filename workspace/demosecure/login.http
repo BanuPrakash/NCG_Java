@@ -1,0 +1,14 @@
+### @name="LOGIN"
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "sam@adobe.com",
+  "password": "secret"
+}
+
+### @name="admin resource"
+GET http://localhost:8080/admin
+Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW1AYWRvYmUuY29tIiwiaWF0IjoxNzIyNzY5NDU3LCJleHAiOjE3MjI3NzA4OTcsInJvbGVzIjpbIlJPTEVfR1VFU1QiXSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9HVUVTVCJdfQ.A_GWOSu5VdivY6eu4ckUl63cM2EKzKcA98eQbMFbVVQ
+Accept: application/json

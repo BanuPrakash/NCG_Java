@@ -25,26 +25,29 @@ public class JwtService {
     private String jwtSigningKey; // read from application.properties
 
     public String generateTokenUtil(UserDetails userDetails) {
+        System.out.println("generateTokenUtil");
         Map<String,Object> claims = new HashMap<>();
-        return generateToken(claims, userDetails);
+        String token =  generateToken(claims, userDetails);
+        System.out.println("Token :" + token);
+        return token;
     }
 
     private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        User user = (User) userDetails;
         Collection<String> authorities = userDetails.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
+        User user = (User) userDetails;
         return Jwts.builder()
-                .setSubject(user.getEmail())
                 .setClaims(extraClaims)
-                .claim("authorities", authorities)
-                .claim("role" , authorities)
-                .claim("iss", "https://server.adobe.com")
+//                .setSubject(userDetails.getUsername())
+                .setSubject(user.getEmail())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .claim("roles",authorities)
+                .claim("authorities", authorities)
+//				.claim("iss", "http://server.adobe.com")
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
-
     }
 
     private Key getSigningKey() {
