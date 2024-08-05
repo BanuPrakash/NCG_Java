@@ -1629,6 +1629,55 @@ data.sql --> DML
 
 https://bcrypt-generator.com/
 
+=====
+
+Guiding Principles of REST: Stateless << no coversational state of the client>>
+
+Solution: Token
+JWT: JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+
+https://jwt.io/
+
+JWT Token:
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.
+SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+Part 1 of JWT: 
+Header:
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+Part 2 of JWT: claims
+{
+    sub: "rita@adobe.com",
+    name : 'Rita Sharma', <<optional>>,
+    iat: 5423232522,
+    exp: 5666223232,
+    iss: "http://auth.server.adobe.com", <<optional>>
+    authorities: 'ROLE_ADMIN', 'ROLE_CUSTOMER'
+}
+
+Part 3: SIGNATURE
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  yourTopSecretSaltValueToGenerateToken <<generally this comes for configurations / can be remote>>
+) 
+
+Seperate Configuration Servers --> Github where configurations reside
+
+Instead of SecretKey we can have Private Key and Public Key
+
+ Private Key: generate the token
+ Public Key: valdiate the token
+
+===========================
+
 
 
 
