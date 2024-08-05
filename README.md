@@ -1520,6 +1520,103 @@ Unit test Controller by mocking Service ==> Mockito
 
 =========================
 
+Recap: 
+Annotations:
+1) @Component --> utility classes
+2) @Repository --> DAO implmentation classes, if we have custom CRUD operations. While using JpaRepository we don't need this.
+Spring Data Jpa creates Respority classes  for our interface
+3) @Service --> Facade over Repostiory and Business classes
+@Transactional --> atomic operation; if method doesn't throw exceptions; commit else rollback
+Dirty Checking: if any entity gets changes --> DIRTY --> ORM sends Update SQL
+4) @Configuration --> generally to read properties from properites file or to have factory methods 
+@Bean
+5) @RestController : for building RESTful WS
+@RequestMapping, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
+@PathVariable to read Path paramters
+@RequestParam to read query parameters
+@RequestBody to convert payload to object
+@ResponseBody <<optional>> to covert object to represetnation and add to payload based on Accept header
 
-Security on Monday
+6) @ControllerAdvice with @ExceptionHandler to handle exceptions propagated from @Controller or @RestController classes
+
+-------------------------
+
+ApplicationContext --> environment where beans are managed
+PersitenceContext --> environment where entities are managed.
+ServletContext --> environment where servlets are managed [ within Servlet engine]
+
+------
+
+Unit Testing by mocking dependecies --> Mockito
+Integration Testing --> TestRestTemplate [ can mock or use actual depedency]
+
+Day 6
+
+Life cycle of entities w.r.t PersistenceContext
+
+outside of @Transactional
+
+Detached state
+
+Changes happing to the entity 
+is not reflected to DB
+
+
+findById(..)
+findAll()
+
+------------------
+
+Security
+
+```
+ <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+By adding above dependency:
+1) makes all resources as protected resources
+2) provides Authentication and Authorization module
+3) provides login and logout pages [http://localhost:8080/logout]
+4) creates a single user with username as "user" and password is generated
+Using generated security password: 6553900e-ddde-42dd-96bf-abe754923fb4
+
+Filter classes are similar to Servlet but used for Interceptor pattern
+Common Scenarios of using Filters
+1) security
+2) Profile
+3) Encrypt/Decrypt
+4) Encoding
+
+JdbcAuthenticationManager           LDapAuthencticationManager      InMemoryAuthentication Manager
+
+ protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, 
+    FilterChain chain, Authentication authResult) {
+        SecurityContext context = this.securityContextHolderStrategy.createEmptyContext();
+        context.setAuthentication(authResult);
+        this.securityContextHolderStrategy.setContext(context);
+        this.securityContextRepository.saveContext(context, request, response);
+ }
+
+
+Authentication
+priciple:username
+credentials:null
+authorities: ROLE_ADMIN, ROLE_GUEST
+
+JSESSIONID
+2LW4QB1
+
+cookie
+
+
+AEDPR09214E
+
+
+
+
+
+
 
