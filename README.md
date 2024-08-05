@@ -1610,7 +1610,24 @@ authorities: ROLE_ADMIN, ROLE_GUEST
 Spring Boot application:
 mysql, jpa, lombok, web , security
 
+HttpSecurity helps role based access to resource / CORS / CSRF / customize unauthorized entry ,.....
 
+
+===============
+
+Users in Database: 
+https://docs.spring.io/spring-security/reference/servlet/appendix/database-schema.html
+
+Below props in application.properties
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+executes "schema.sql" and followed by "data.sql" when application starts
+
+schema.sql ---> DDL
+data.sql --> DML 
+
+https://bcrypt-generator.com/
 
 
 
