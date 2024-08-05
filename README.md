@@ -1686,6 +1686,54 @@ List supports duplicate
 
 Prefer Set over List for association
 
+Part 1: 
+User register
+ //skip 
+
+create some users are created in backend
+insert into users values ('eva@adobe.com', 'Eva' , '$2a$12$LnmezO2W6S9atB4AQ0HAaep541xjXM4EmHsG07XdI2kdSF/ZH.poe');
+insert into users values ('james@adobe.com', 'James' , '$2a$12$LnmezO2W6S9atB4AQ0HAaep541xjXM4EmHsG07XdI2kdSF/ZH.poe');
+
+insert into roles values ('ROLE_ADMIN', "admin role has complete access");
+insert into roles values ('ROLE_CUSTOMER', "registered customers");
+
+insert into users_roles values ('eva@adobe.com', 'ROLE_ADMIN');
+insert into users_roles values ('eva@adobe.com', 'ROLE_CUSTOMER');
+
+```
+
+mysql> select * from users;
++-----------------+-------+--------------------------------------------------------------+
+| email           | fname | password                                                     |
++-----------------+-------+--------------------------------------------------------------+
+| eva@adobe.com   | Eva   | $2a$12$LnmezO2W6S9atB4AQ0HAaep541xjXM4EmHsG07XdI2kdSF/ZH.poe |
+| james@adobe.com | James | $2a$12$LnmezO2W6S9atB4AQ0HAaep541xjXM4EmHsG07XdI2kdSF/ZH.poe |
++-----------------+-------+--------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from roles;
++---------------+--------------------------------+
+| name          | description                    |
++---------------+--------------------------------+
+| ROLE_ADMIN    | admin role has complete access |
+| ROLE_CUSTOMER | registered customers           |
++---------------+--------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users_roles;
++-----------------+---------------+
+| user_fk         | role_fk       |
++-----------------+---------------+
+| eva@adobe.com   | ROLE_ADMIN    |
+| eva@adobe.com   | ROLE_CUSTOMER |
+| james@adobe.com | ROLE_CUSTOMER |
++-----------------+---------------+
+
+``` 
+
+mysql> insert into users_roles values ('james@adobe.com', 'ROLE_CUSTOMER');
+Part 2:
+Login
 
 
 
