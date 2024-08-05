@@ -1738,8 +1738,20 @@ Login --> generate Token
 
 Resume @ 4:20
 
+Take demosecure from "github" 
 
+similar code, but working,
+we will discuss that
 
+======================================
+
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW1AYWRvYmUuY29tIiwiaWF0IjoxNzIyODU1NjU0LCJleHAiOjE3MjI4NTcwOTQsInJvbGVzIjpbIlJPTEVfR1VFU1QiXSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9HVUVTVCJdfQ.53SDK1mM23SWopJsUWpUUH-CoC8YBrigv0tXnw97O2k"
+}
+
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldmFAYWRvYmUuY29tIiwiaWF0IjoxNzIyODU1NzU1LCJleHAiOjE3MjI4NTcxOTUsInJvbGVzIjpbIlJPTEVfR1VFU1QiLCJST0xFX0FETUlOIl0sImF1dGhvcml0aWVzIjpbIlJPTEVfR1VFU1QiLCJST0xFX0FETUlOIl19.A7SYaqJOSoUKnRJXk-ShbE8Hq2aXI6LlU175h0FWl4k"
+}
 
 
 
