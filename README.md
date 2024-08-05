@@ -1606,13 +1606,10 @@ priciple:username
 credentials:null
 authorities: ROLE_ADMIN, ROLE_GUEST
 
-JSESSIONID
-2LW4QB1
 
-cookie
+Spring Boot application:
+mysql, jpa, lombok, web , security
 
-
-AEDPR09214E
 
 
 
