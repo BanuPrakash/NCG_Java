@@ -1733,7 +1733,9 @@ mysql> select * from users_roles;
 ``` 
 
 Part 2:
-Login
+Login --> generate Token
+
+
 
 
 
