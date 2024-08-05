@@ -30,7 +30,7 @@ public class User implements UserDetails {
     private String firstName;
 
     // ManyToMany relation with role
-    
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
