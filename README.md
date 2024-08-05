@@ -1700,6 +1700,7 @@ insert into roles values ('ROLE_CUSTOMER', "registered customers");
 insert into users_roles values ('eva@adobe.com', 'ROLE_ADMIN');
 insert into users_roles values ('eva@adobe.com', 'ROLE_CUSTOMER');
 
+mysql> insert into users_roles values ('james@adobe.com', 'ROLE_CUSTOMER');
 ```
 
 mysql> select * from users;
@@ -1731,7 +1732,6 @@ mysql> select * from users_roles;
 
 ``` 
 
-mysql> insert into users_roles values ('james@adobe.com', 'ROLE_CUSTOMER');
 Part 2:
 Login
 
