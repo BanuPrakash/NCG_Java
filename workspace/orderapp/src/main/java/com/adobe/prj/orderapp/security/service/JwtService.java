@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class JwtService {
 
-    @Value("${jwt.service}")
+    @Value("${jwt.secret}")
     private String jwtSigningKey; // read from application.properties
 
     public String generateTokenUtil(UserDetails userDetails) {
